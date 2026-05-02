@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Wishen</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="nav-brand text-gradient">Wishen</a>
+        <div class="nav-links">
+            <span class="nav-user-info" style="font-weight:600; color:var(--text-secondary);"></span>
+            <a href="login.html" class="btn btn-outline" id="logoutBtn">Log Out</a>
+        </div>
+    </nav>
+
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <ul class="sidebar-menu">
+                <li><a href="dashboard.html" class="active">🎁 My Wishlist</a></li>
+                <li><a href="friends.html">👥 Friends</a></li>
+                <li><a href="messages.html">💬 Messages</a></li>
+                <li><a href="todos.html">✅ To-Do List</a></li>
+                <li><a href="settings.html">⚙️ Settings</a></li>
+            </ul>
+        </aside>
+
+        <main class="dashboard-main">
+            <div class="dashboard-header">
+                <h2>My Wishlist</h2>
+                <button class="btn btn-primary" onclick="document.getElementById('addItemModal').classList.add('active')">+ Add Item</button>
+            </div>
+
+            <!-- Empty State (Shown if no items) -->
+            <div class="empty-state" id="emptyWishlist">
+                <h3 class="doodle-text" style="font-size: 3rem; margin-bottom: 1rem;">🎁</h3>
+                <h3>Your wishlist is empty!</h3>
+                <p>Start adding things you'd love to receive so your friends know what to get you.</p>
+                <button class="btn btn-outline" onclick="document.getElementById('addItemModal').classList.add('active')">Add First Item</button>
+            </div>
+
+            <div class="wishlist-grid" id="wishlistGrid" style="display: none;">
+                <!-- Populated by main.js -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Add Item Modal -->
+    <div class="modal-overlay" id="addItemModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="document.getElementById('addItemModal').classList.remove('active')">&times;</span>
+            <h2 style="margin-bottom: 1.5rem;">Add New Item <span class="doodle-text">Yay!</span></h2>
+            <form id="addItemForm">
+                <div class="form-group">
+                    <label>Item Name</label>
+                    <input type="text" id="itemTitle" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea id="itemDesc" class="form-control" rows="3"></textarea>
+                </div>
+                <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div>
+                        <label>Price </label>
+                        <input type="number" step="0.01" id="itemPrice" class="form-control">
+                    </div>
+                    <div>
+                        <label>Upload Image </label>
+                        <input type="file" id="itemImg" accept="image/*">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Link to Buy</label>
+                    <input type="url" id="itemLink" class="form-control" placeholder="https://...">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Save to Wishlist</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
