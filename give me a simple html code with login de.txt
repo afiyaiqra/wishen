@@ -1,0 +1,1 @@
+give me a simple html code with login details like username= admin and password = admin and display login successful when the credentials are correct or display username and password incorrect when given wrong credentials only in html no php

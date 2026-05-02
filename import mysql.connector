@@ -1,0 +1,30 @@
+import mysql.connector
+
+try:
+    connection = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="",
+        database="test"
+    )
+
+    cursor = connection.cursor()
+
+    create_table_query = """
+    CREATE TABLE IF NOT EXISTS customer(
+        ID INT PRIMARY KEY,
+        Name VARCHAR(80)
+    )
+    """
+
+    cursor.execute(create_table_query)
+    print("Table created")
+
+except mysql.connector.Error as error:
+    print("Error:", error)
+
+finally:
+    if connection.is_connected():
+        cursor.close()
+        connection.close()
+        print("Connection closed")
